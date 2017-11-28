@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieNaviController : MonoBehaviour {
-    private NavMeshAgent m_navMeshAgent;
+    public NavMeshAgent m_navMeshAgent;
 
     //public Transform targetTF;
-
+    public GameObject Player;
     private float xr;
     private float zr;
     [SerializeField]
-    private bool isSeach = true;
+    public bool isSeach = true;
     private float m_timer;
-    private float SearchIntrval = 10f;
+    private float SearchIntrval = 8f;
+    public Vector3 Serch;
 
     // Use this for initialization
     void Start () {
