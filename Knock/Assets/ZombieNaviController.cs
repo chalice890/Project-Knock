@@ -4,37 +4,39 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieNaviController : MonoBehaviour {
-    private NavMeshAgent m_navMeshAgent;
+    public NavMeshAgent m_navMeshAgent;
 
     //public Transform targetTF;
-
-    int r;
+    public GameObject Player;
+    private float xr;
+    private float zr;
     [SerializeField]
-    private bool isSeach = true;
+    public bool isSeach = true;
     private float m_timer;
-    [SerializeField]
-    private float SearchIntrval = 60f;
+    private float SearchIntrval = 8f;
+    public Vector3 Serch;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         m_navMeshAgent = GetComponent<NavMeshAgent>();
-        m_navMeshAgent.SetDestination(new Vector3(0, 0, 0));
-
+        m_navMeshAgent.SetDestination(new Vector3(30, 0, 30));
+        m_timer = 0;
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (isSeach)
         {
-            m_timer -= Time.deltaTime;
+            m_timer += Time.deltaTime;
 
-            if (m_timer <= 0)
+            if (m_timer >= SearchIntrval)
             {
-                r = Random.Range(-40, 40);
-
-                m_navMeshAgent.SetDestination(new Vector3(r, 0, r));
-                m_timer = SearchIntrval;
+                xr = Random.Range(-30, 30);
+                zr = Random.Range(-23, 23);
+                m_navMeshAgent.SetDestination(new Vector3(xr, 0, zr));
+                m_timer = 0;
             }
         }
-	}
+    }
 }
