@@ -6,21 +6,28 @@ using UnityEngine.AI;
 public class ZombieNaviController : MonoBehaviour {
     public NavMeshAgent m_navMeshAgent;
 
+    enum SerchMode {WAIT_MODE, SERCH_MODE, RUN_MODE};
+
     //public Transform targetTF;
+    public GameObject Enemy;
     private float xr;
     private float zr;
     [SerializeField]
-    public bool isSeach = true;
-    private float m_timer;
-    private float SearchIntrval = 8f;
-    private float Speed = 5f;
-    public Vector3 Serch;
+    public int Serchmode;
+    public float m_timer;
+    private float SearchIntrval;
+    public float Speed;
 
     // Use this for initialization
     void Start () {
         m_navMeshAgent = GetComponent<NavMeshAgent>();
-        m_navMeshAgent.SetDestination(new Vector3(30, 0, 30));
         m_timer = 0;
+        SearchIntrval = 10f;
+        Speed = 5f;
+        Serchmode = (int)SerchMode.SERCH_MODE;
+        xr = Random.Range(-44, 44);
+        zr = Random.Range(-33, 33);
+        m_navMeshAgent.SetDestination(new Vector3(xr, 0, zr));
     }
 
     // Update is called once per frame
@@ -28,22 +35,46 @@ public class ZombieNaviController : MonoBehaviour {
     {
         m_navMeshAgent.speed = Speed;
 
-        if (isSeach)
+        switch (Serchmode)
         {
-            m_timer += Time.deltaTime;
+            case (int)SerchMode.WAIT_MODE:
 
-            if (m_timer >= SearchIntrval)
-            {
-                xr = Random.Range(-44, 44);
-                zr = Random.Range(-33, 33);
-                m_navMeshAgent.SetDestination(new Vector3(xr, 0, zr));
-                m_timer = 0;
-                Speed = 5f;
-            }
-        }
-        else
-        {
-            Speed = 10f;
+                m_timer += Time.deltaTime;
+
+                if (m_timer > 3)
+                {
+                    xr = Random.Range(-44, 44);
+                    zr = Random.Range(-33, 33);
+                    m_navMeshAgent.SetDestination(new Vector3(xr, 0, zr));
+                    m_timer = 0;
+                    Speed = 5f;
+                    Serchmode = (int)SerchMode.SERCH_MODE;
+                }
+                break;
+            case (int)SerchMode.SERCH_MODE:
+
+                m_timer += Time.deltaTime;
+
+                if (m_timer > SearchIntrval)
+                {
+                    xr = Random.Range(-44, 44);
+                    zr = Random.Range(-33, 33);
+                    m_navMeshAgent.SetDestination(new Vector3(xr, 0, zr));
+                    m_timer = 0;
+                    Speed = 5f;
+                }
+                if (Enemy.transform.position == m_navMeshAgent.destination)
+                {
+                    m_timer = 0;
+                    Serchmode = (int)SerchMode.WAIT_MODE;
+                    Speed = 0f;
+                    Debug.Log("ok");
+                }
+                break;
+            case (int)SerchMode.RUN_MODE:
+
+                Speed = 20f;
+                break;
         }
     }
 }

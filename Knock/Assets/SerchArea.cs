@@ -11,7 +11,7 @@ public class SerchArea : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("In Player");
-            m_enemy.isSeach = false;
+            m_enemy.Serchmode = 2;
             m_enemy.m_navMeshAgent.SetDestination(other.gameObject.transform.position);
         }
     }
@@ -20,7 +20,9 @@ public class SerchArea : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("Exit Player");
-            m_enemy.isSeach = true;
+            m_enemy.Serchmode = 0;
+            m_enemy.Speed = 0f;
+            m_enemy.m_timer = 0f;
         }
     }
 }
