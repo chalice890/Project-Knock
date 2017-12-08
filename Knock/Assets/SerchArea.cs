@@ -12,7 +12,6 @@ public class SerchArea : MonoBehaviour {
         {
             Debug.Log("In Player");
             m_enemy.Serchmode = 2;
-            m_enemy.m_navMeshAgent.SetDestination(other.gameObject.transform.position);
         }
     }
     private void OnTriggerExit(Collider other)

@@ -38,6 +38,5 @@ public class ZombieAnimation : MonoBehaviour {
                 this.animator.SetBool(isWalk, false);
                 break;
         }
-		
 	}
 }
