@@ -14,7 +14,7 @@ public class SeenMnager : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Tatsuki");
+            SceneManager.LoadScene("Main");
         }
     }
 }
