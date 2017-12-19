@@ -10,7 +10,6 @@ public class SerchArea : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("In Player");
-            m_enemy.m_navMeshAgent.SetDestination(other.transform.position);
             m_enemy.Serchmode = 2;
         }
     }

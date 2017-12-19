@@ -73,6 +73,7 @@ public class ZombieNaviController : MonoBehaviour {
                 }
                 break;
             case (int)SerchMode.RUN_MODE:
+                m_navMeshAgent.SetDestination(GameObject.Find("FPSController").transform.position);
                 Speed = 20f;
                 break;
         }
