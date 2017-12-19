@@ -24,7 +24,7 @@ public class SceneManeger : MonoBehaviour {
 
         if(enemy.gameObject.name == "ZombieRig")
         {
-            SceneManager.LoadScene("Start");
+            SceneManager.LoadScene("GameOver");
             Debug.Log("Enter");
 
         }
