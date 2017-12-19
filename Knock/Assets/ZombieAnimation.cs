@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAnimation : MonoBehaviour {
+public class ZombieAnimation : MonoBehaviour
+{
     public ZombieNaviController e_enemy;
     private Animator animator;
 
@@ -11,7 +12,8 @@ public class ZombieAnimation : MonoBehaviour {
     private const string isRun = "isRun";
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         this.animator = GetComponent<Animator>();
         this.animator.SetBool(isRun, false);
         this.animator.SetBool(isWait, false);
@@ -19,7 +21,8 @@ public class ZombieAnimation : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         switch (e_enemy.Serchmode)
         {
             case 0:
@@ -38,5 +41,5 @@ public class ZombieAnimation : MonoBehaviour {
                 this.animator.SetBool(isWalk, false);
                 break;
         }
-	}
+    }
 }

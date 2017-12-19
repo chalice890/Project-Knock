@@ -5,18 +5,12 @@ using UnityEngine;
 public class SerchDoor : MonoBehaviour {
     public DoorCrt DoorCrt;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Enemy" && DoorCrt.Click == false)
         {
-            DoorCrt.Click = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            DoorCrt.Click = false;
+            DoorCrt.Open = true;
+            DoorCrt.Close = false;
         }
     }
 }

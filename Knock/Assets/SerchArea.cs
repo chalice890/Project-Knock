@@ -7,7 +7,6 @@ public class SerchArea : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("In" + other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("In Player");
