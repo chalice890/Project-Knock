@@ -66,7 +66,7 @@ public class ZombieNaviController : MonoBehaviour {
                 if ((Enemy.transform.position.x >= m_navMeshAgent.destination.x - 1 && Enemy.transform.position.x <= m_navMeshAgent.destination.x + 1) &&
                                                                         (Enemy.transform.position.z >= m_navMeshAgent.destination.z - 1 && Enemy.transform.position.z <= m_navMeshAgent.destination.z + 1))
                 {
-                    m_timer = 0;
+                    m_timer = 0f;
                     Serchmode = (int)SerchMode.WAIT_MODE;
                     Speed = 0f;
                     Debug.Log("ok");
