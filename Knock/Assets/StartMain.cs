@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class StartMain : MonoBehaviour {
 
-    public void MoveMain()
+    void Update()
     {
-        SceneManager.LoadScene("Main");
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Main");
+        }
     }
 
 }

@@ -11,6 +11,7 @@ public class SerchDoor : MonoBehaviour {
         {
             DoorCrt.Open = true;
             DoorCrt.Close = false;
+            DoorCrt.Knock = true;
         }
     }
 }

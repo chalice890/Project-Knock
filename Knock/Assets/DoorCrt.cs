@@ -10,13 +10,15 @@ public class DoorCrt : MonoBehaviour {
     public bool Click;
     private int NowKey;
     private int OldKey;
-    private int Keyflg;
+    public int Keyflg;
+    public bool Knock;
 
     // Use this for initialization
     void Start () {
+        Knock = false;
         this.Animator = GetComponent<Animator>();
         Open = false;
-        Close = false;
+        Close = true;
         Click = false;
     }
 
@@ -30,16 +32,9 @@ public class DoorCrt : MonoBehaviour {
 
         if (Click && Keyflg == 1)
         {
-                if (Open != true)
-                {
-                    Open = true;
-                    Close = false;
-                }
-                else
-                {
-                    Close = true;
-                    Open = false;
-                }
+            Open = !Open;
+            Close = !Close;
+
         }
 
         this.Animator.SetBool("Open", Open);
